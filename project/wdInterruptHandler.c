@@ -4,10 +4,17 @@
 
 void
 __interrupt_vec(WDT_VECTOR) WDT(){	/* 250 interrupts/sec */
-  buzzer_set_period(3500);
-  static char beatCount = 0;
-  if (++beatCount == 125) {
-    //stateAdvance();
-    beatCount = 0;
+  // buzzer_set_period(3500);
+  static short tone = 0;
+  static char beatState = 0;
+  static char watchDogTimerCount = 0;
+  if (++watchDogTimerCount == 125) {
+    tone = stateAdvance(beatState);
+    buzzer_set_period(tone);
+    watchDogTimerCount = 0;
+    if (beatState == 9)
+      beatState = 0;
+    else
+      beatState++;
   }
 }

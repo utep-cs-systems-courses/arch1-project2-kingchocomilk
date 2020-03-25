@@ -1,24 +1,31 @@
 #include "buzzer.h"
 #include <msp430.h>
 
-void stateAdvance(unsigned char state) {
+/* Notes for our Westminster Doorbell tone! */ 
+#define C (short)2093
+#define D (short)2349
+#define E (short)2637
+#define G (short)3136
 
-  switch(state) {
-  case 0 :
-    buzzer_set_period(2093); //Play C7
-  case 1 :
-    buzzer_set_period(2637); //Play E7
-  case 2 :
-    buzzer_set_period(2349); //Play D7
-  case 3 :
-    buzzer_set_period(3136); //Play G7
-  case 4 :
-    buzzer_set_period(3136); //Play G7
-  case 5 :
-    buzzer_set_period(2349); //Play D7
-  case 6 :
-    buzzer_set_period(2637); //Play E7
-  case 7 :
-    buzzer_set_period(2093); //Play C7
-  }
+short stateAdvance(char beatState) {
+  if (beatState == 0)
+    return C;
+  if (beatState == 1)
+    return E;
+  if (beatState == 2)
+    return D;
+  if (beatState == 3)
+    return G;
+  if (beatState == 4)
+    return 0;
+  if (beatState == 5)
+    return G;
+  if (beatState == 6)
+    return D;
+  if (beatState == 7)
+    return C;
+  if (beatState == 8)
+    return E;
+  else
+    return 0;
 }
