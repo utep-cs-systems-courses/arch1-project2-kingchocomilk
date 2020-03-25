@@ -19,9 +19,12 @@ int main() {
   // What is sfr_w()?
   configureClocks();
 
+  // The buzzer is initialized and ready.
   buzzer_init();
+  // The clock is used to cycle through the states.
   enableWDTInterrupts();
-  
+
+  // Leave the main program and go into the interrupt.
   or_sr(0x18);
   
 }
