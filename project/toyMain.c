@@ -21,6 +21,8 @@ int main() {
 
   // The buzzer is initialized and ready.
   buzzer_init();
+  switch_init();
+  led_init();
   // The clock is used to cycle through the states.
   enableWDTInterrupts();
 

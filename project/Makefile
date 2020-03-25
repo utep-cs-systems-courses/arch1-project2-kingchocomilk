@@ -12,13 +12,19 @@ AR		= msp430-elf-ar
 all: tune.elf 
 
 #additional rules for files
-tune.elf: ${COMMON_OBJECTS} stateMachine.o buzzer.o wdInterruptHandler.o libTimer.a toyMain.o sr.o
+tune.elf: ${COMMON_OBJECTS} stateMachine.o buzzer.o wdInterruptHandler.o libTimer.a toyMain.o sr.o led.o switches.o p1_interrupt_handler.o
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 load: tune.elf
 	msp430loader.sh tune.elf
 
 sr.o: sr.h sr.s
+
+p1_interrupt_handler.o: p1_interrupt_handler.c
+
+led.o: led.h led.c
+
+switches.o: switches.h switches.c
 
 clean:
 	rm -f *.o *.elf
