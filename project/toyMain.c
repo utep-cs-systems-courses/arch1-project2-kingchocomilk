@@ -1,6 +1,10 @@
 #include <msp430.h>
 #include "buzzer.h"
 #include "libTimer.h"
+#include "musicPlayer.h"
+#include "music.h"
+#include "switches.h"
+#include "led.h"
 
 int main() {
   /* 
@@ -19,10 +23,14 @@ int main() {
   // What is sfr_w()?
   configureClocks();
 
+  musicInit();
+  musicPlayerInit();
+
   // The buzzer is initialized and ready.
   buzzer_init();
   switch_init();
   led_init();
+
   // The clock is used to cycle through the states.
   enableWDTInterrupts();
 

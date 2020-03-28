@@ -1,13 +1,10 @@
 #include "buzzer.h"
 #include <msp430.h>
 
-/* Notes for our Westminster Doorbell tone! */ 
-#define C (short)2093
-#define D (short)2349
-#define E (short)2637
-#define G (short)3136
-
 short stateAdvance(char beatState) {
+  /*Convert to switch*/
+
+  /*
   if (beatState == 0)
     return C;
   if (beatState == 1)
@@ -28,4 +25,5 @@ short stateAdvance(char beatState) {
     return E;
   else
     return 0;
+  */
 }

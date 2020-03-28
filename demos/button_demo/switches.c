@@ -7,11 +7,11 @@ char switch_state_down, switch_state_changed; /* effectively boolean */
 static char 
 switch_update_interrupt_sense()
 {
-  char p1val = P2IN;
+  char p2val = P2IN;
   /* update switch interrupt to detect changes from current buttons */
-  P2IES |= (p1val & SWITCHES);	/* if switch up, sense down */
-  P2IES &= (p1val | ~SWITCHES);	/* if switch down, sense up */
-  return p1val;
+  P2IES |= (p2val & SWITCHES);	/* if switch up, sense down */
+  P2IES &= (p2val | ~SWITCHES);	/* if switch down, sense up */
+  return p2val;
 }
 
 void 
@@ -28,8 +28,10 @@ switch_init()			/* setup switch */
 void
 switch_interrupt_handler()
 {
-  char p1val = switch_update_interrupt_sense();
-  switch_state_down = (p1val & SW1) ? 0 : 1; /* 0 when SW1 is up */
+  char p2val = switch_update_interrupt_sense();
+  switch1_state_down = (p2val & SW1) ? 0 : 1; /* 0 when SW1 is up */
+  switch2_state_down = (p2val & SW2) ? 0 : 1;
+  // <<make the rest
   switch_state_changed = 1;
-  led_update();
+  led_update(); //if switch_state_down do next song
 }
