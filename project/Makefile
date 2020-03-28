@@ -12,7 +12,7 @@ AR		= msp430-elf-ar
 all: tune.elf 
 
 #additional rules for files
-tune.elf: ${COMMON_OBJECTS} stateMachine.o buzzer.o led.o music.o musicPlayer.o wdInterruptHandler.o switches.o libTimer.a toyMain.o sr.o
+tune.elf: ${COMMON_OBJECTS} stateMachine.o buzzer.o led.o music.o musicPlayer.o wdInterruptHandler.o switches.o libTimer.a toyMain.o sr.o p1_interrupt_handler.o
 	${CC} ${CFLAGS} ${LDFLAGS} -o $@ $^
 
 load: tune.elf
