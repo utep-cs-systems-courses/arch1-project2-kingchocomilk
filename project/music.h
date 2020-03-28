@@ -1,3 +1,6 @@
+#ifndef MUSIC_H
+#define MUSIC_H
+
 /* These are all the Note to Frequency constants. All values are rounded. 
    https://www.doctormix.com/docs/Note-To-Frequancy_chart.jpg*/
 #define Z0  (short)1 // No sound. Empty null note.
@@ -108,3 +111,4 @@ extern short **allMusic;
 
 
 void musicInit();
+#endif /*MUSIC_H */
