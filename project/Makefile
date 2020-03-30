@@ -20,15 +20,15 @@ load: tune.elf
 
 sr.o: sr.h sr.s
 
-p1_interrupt_handler.o: p1_interrupt_handler.c
+p1_interrupt_handler.o: p1_interrupt_handler.c switches.o
 
-led.o: led.h led.c
+led.o: led.h led.c music.o musicPlayer.o
 
-musicPlayer.o: musicPlayer.h musicPlayer.c
+musicPlayer.o: musicPlayer.h musicPlayer.c music.o
 
-switches.o: switches.h switches.c
+switches.o: switches.h switches.c music.o musicPlayer.o
 
-music.o: music.h music.c
+music.o: music.h music.c musicPlayer.o
 
 clean:
 	rm -f *.o *.elf

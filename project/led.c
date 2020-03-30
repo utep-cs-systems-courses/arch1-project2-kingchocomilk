@@ -2,6 +2,7 @@
 #include "led.h"
 #include "switches.h"
 #include "musicPlayer.h"
+#include "music.h"
 
 void led_init()
 {

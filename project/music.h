@@ -96,10 +96,10 @@
 /* To help understanding the notes like a piano, reference:
        www.choose-piano-lessons.com/piano-keys.html */
 // Add more music here. Up to 3.
-extern short nullSong[] = {Z0};
-extern short westMinsterSong[] = {Z0, F7, A7, G7, C7, Z0, C7, G7, A7, F7, Z0};
-extern short oldSpiceSong[] = {Z0, G6, G6, A6, C7, B6, D7, E7, C6, Z0}; // GGACBDEC
-extern short allKeysSong[] = {Z0, A6, B6, C7, D7, E7, F7, G7, Z0};
+extern short nullSong[1];
+extern short westMinsterSong[11];
+extern short oldSpiceSong[10]; // GGACBDEC
+extern short allKeysSong[9];
 
 // Since I cannot initialize an irregular 2d array of notes they need to be allocated.
 extern short *firstSong;
@@ -111,4 +111,5 @@ extern short **allMusic;
 
 
 void musicInit();
+
 #endif /*MUSIC_H */

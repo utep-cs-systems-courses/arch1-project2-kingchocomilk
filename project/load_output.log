@@ -1,45 +1,65 @@
+student@systems-vm:~/Documents/C_Practice/arch1-project2-kingchocomilk/project> make load
+msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o stateMachine.o stateMachine.c
+msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o buzzer.o buzzer.c
+make: Circular musicPlayer.o <- music.o dependency dropped.
+msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o musicPlayer.o musicPlayer.c
+msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o music.o music.c
+msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o led.o led.c
+msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o wdInterruptHandler.o wdInterruptHandler.c
+msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o switches.o switches.c
+msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o clocksTimer.o clocksTimer.c
+msp430-elf-as   -o sr.o sr.s
+msp430-elf-ar crs libTimer.a clocksTimer.o sr.o
+msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o toyMain.o toyMain.c
+msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o p1_interrupt_handler.o p1_interrupt_handler.c
 msp430-elf-gcc -mmcu=msp430g2553 -I../h -L/opt/ti/msp430_gcc/include -o tune.elf stateMachine.o buzzer.o led.o music.o musicPlayer.o wdInterruptHandler.o switches.o libTimer.a toyMain.o sr.o p1_interrupt_handler.o
-musicPlayer.o:(.data+0x0): multiple definition of `nullSong'
-music.o:(.data+0x0): first defined here
-musicPlayer.o:(.data+0x2): multiple definition of `westMinsterSong'
-music.o:(.data+0x2): first defined here
-musicPlayer.o:(.data+0x18): multiple definition of `oldSpiceSong'
-music.o:(.data+0x18): first defined here
-musicPlayer.o:(.data+0x2c): multiple definition of `allKeysSong'
-music.o:(.data+0x2c): first defined here
-switches.o:(.data+0x0): multiple definition of `nullSong'
-music.o:(.data+0x0): first defined here
-switches.o:(.data+0x2): multiple definition of `westMinsterSong'
-music.o:(.data+0x2): first defined here
-switches.o:(.data+0x18): multiple definition of `oldSpiceSong'
-music.o:(.data+0x18): first defined here
-switches.o:(.data+0x2c): multiple definition of `allKeysSong'
-music.o:(.data+0x2c): first defined here
-toyMain.o:(.data+0x0): multiple definition of `nullSong'
-music.o:(.data+0x0): first defined here
-toyMain.o:(.data+0x2): multiple definition of `westMinsterSong'
-music.o:(.data+0x2): first defined here
-toyMain.o:(.data+0x18): multiple definition of `oldSpiceSong'
-music.o:(.data+0x18): first defined here
-toyMain.o:(.data+0x2c): multiple definition of `allKeysSong'
-music.o:(.data+0x2c): first defined here
 led.o: In function `led_update':
 led.c:(.text+0x2c): undefined reference to `lengthOfSong'
 music.o: In function `musicInit':
-music.c:(.text+0xba): undefined reference to `firstSong'
-music.c:(.text+0xcc): undefined reference to `secondSong'
-music.c:(.text+0xde): undefined reference to `thirdSong'
-music.c:(.text+0xf0): undefined reference to `fourthSong'
-music.c:(.text+0x108): undefined reference to `allMusic'
-music.c:(.text+0x10c): undefined reference to `allMusic'
-music.c:(.text+0x110): undefined reference to `firstSong'
-music.c:(.text+0x118): undefined reference to `allMusic'
-music.c:(.text+0x11e): undefined reference to `secondSong'
-music.c:(.text+0x126): undefined reference to `allMusic'
-music.c:(.text+0x12c): undefined reference to `thirdSong'
-music.c:(.text+0x134): undefined reference to `allMusic'
-music.c:(.text+0x13c): undefined reference to `fourthSong'
-music.c:(.text+0x144): undefined reference to `allMusic'
+music.c:(.text+0x8a): undefined reference to `nullSong'
+music.c:(.text+0x8e): undefined reference to `westMinsterSong'
+music.c:(.text+0x94): undefined reference to `westMinsterSong'
+music.c:(.text+0x9a): undefined reference to `westMinsterSong'
+music.c:(.text+0xa0): undefined reference to `westMinsterSong'
+music.c:(.text+0xa6): undefined reference to `westMinsterSong'
+music.o:music.c:(.text+0xaa): more undefined references to `westMinsterSong' follow
+music.o: In function `musicInit':
+music.c:(.text+0xca): undefined reference to `oldSpiceSong'
+music.c:(.text+0xd0): undefined reference to `oldSpiceSong'
+music.c:(.text+0xd6): undefined reference to `oldSpiceSong'
+music.c:(.text+0xdc): undefined reference to `oldSpiceSong'
+music.c:(.text+0xe2): undefined reference to `oldSpiceSong'
+music.o:music.c:(.text+0xe8): more undefined references to `oldSpiceSong' follow
+music.o: In function `musicInit':
+music.c:(.text+0x102): undefined reference to `allKeysSong'
+music.c:(.text+0x108): undefined reference to `allKeysSong'
+music.c:(.text+0x10e): undefined reference to `allKeysSong'
+music.c:(.text+0x114): undefined reference to `allKeysSong'
+music.c:(.text+0x11a): undefined reference to `allKeysSong'
+music.o:music.c:(.text+0x120): more undefined references to `allKeysSong' follow
+music.o: In function `musicInit':
+music.c:(.text+0x134): undefined reference to `nullSong'
+music.c:(.text+0x140): undefined reference to `westMinsterSong'
+music.c:(.text+0x14c): undefined reference to `oldSpiceSong'
+music.c:(.text+0x158): undefined reference to `allKeysSong'
+music.c:(.text+0x164): undefined reference to `firstSong'
+music.c:(.text+0x16e): undefined reference to `nullSong'
+music.c:(.text+0x176): undefined reference to `secondSong'
+music.c:(.text+0x180): undefined reference to `westMinsterSong'
+music.c:(.text+0x188): undefined reference to `thirdSong'
+music.c:(.text+0x192): undefined reference to `oldSpiceSong'
+music.c:(.text+0x19a): undefined reference to `fourthSong'
+music.c:(.text+0x1a2): undefined reference to `allKeysSong'
+music.c:(.text+0x1b2): undefined reference to `allMusic'
+music.c:(.text+0x1b6): undefined reference to `allMusic'
+music.c:(.text+0x1ba): undefined reference to `firstSong'
+music.c:(.text+0x1c2): undefined reference to `allMusic'
+music.c:(.text+0x1c8): undefined reference to `secondSong'
+music.c:(.text+0x1d0): undefined reference to `allMusic'
+music.c:(.text+0x1d6): undefined reference to `thirdSong'
+music.c:(.text+0x1de): undefined reference to `allMusic'
+music.c:(.text+0x1e6): undefined reference to `fourthSong'
+music.c:(.text+0x1ee): undefined reference to `allMusic'
 musicPlayer.o: In function `.L2':
 musicPlayer.c:(.text+0x10): undefined reference to `currentSong'
 musicPlayer.o: In function `musicPlayerUpdate':
