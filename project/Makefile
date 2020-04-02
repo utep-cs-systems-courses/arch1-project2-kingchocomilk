@@ -24,11 +24,11 @@ p1_interrupt_handler.o: p1_interrupt_handler.c switches.o
 
 led.o: led.h led.c music.o musicPlayer.o
 
-musicPlayer.o: musicPlayer.h musicPlayer.c music.o
+musicPlayer.o: musicPlayer.h musicPlayer.c music.o music.h music.c
 
 switches.o: switches.h switches.c music.o musicPlayer.o
 
-music.o: music.h music.c musicPlayer.o
+music.o: music.h music.c musicPlayer.o musicPlayer.c musicPlayer.h
 
 clean:
 	rm -f *.o *.elf

@@ -1,18 +1,6 @@
-student@systems-vm:~/Documents/C_Practice/arch1-project2-kingchocomilk/project> make load
-msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o stateMachine.o stateMachine.c
-msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o buzzer.o buzzer.c
-make: Circular musicPlayer.o <- music.o dependency dropped.
-msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o musicPlayer.o musicPlayer.c
-msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o music.o music.c
-msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o led.o led.c
-msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o wdInterruptHandler.o wdInterruptHandler.c
-msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o switches.o switches.c
-msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o clocksTimer.o clocksTimer.c
-msp430-elf-as   -o sr.o sr.s
-msp430-elf-ar crs libTimer.a clocksTimer.o sr.o
-msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o toyMain.o toyMain.c
-msp430-elf-gcc -mmcu=msp430g2553 -I../h   -c -o p1_interrupt_handler.o p1_interrupt_handler.c
 msp430-elf-gcc -mmcu=msp430g2553 -I../h -L/opt/ti/msp430_gcc/include -o tune.elf stateMachine.o buzzer.o led.o music.o musicPlayer.o wdInterruptHandler.o switches.o libTimer.a toyMain.o sr.o p1_interrupt_handler.o
+
+make: Circular musicPlayer.o <- music.o dependency dropped.
 led.o: In function `led_update':
 led.c:(.text+0x2c): undefined reference to `lengthOfSong'
 music.o: In function `musicInit':
