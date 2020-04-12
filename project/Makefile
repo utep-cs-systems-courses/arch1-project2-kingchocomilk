@@ -33,7 +33,7 @@ music.o: music.h music.c musicPlayer.o musicPlayer.c musicPlayer.h
 clean:
 	rm -f *.o *.elf
 
-wdInterruptHandler.o: stateMachine.h
+wdInterruptHandler.o: stateMachine.h wdInterruptHandler.c
 
 libTimer.a: clocksTimer.o sr.o
 	$(AR) crs $@ $^

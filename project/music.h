@@ -1,4 +1,5 @@
 #ifndef MUSIC_H
+#include <stdlib.h>
 #define MUSIC_H
 
 /* These are all the Note to Frequency constants. All values are rounded. 
@@ -96,16 +97,11 @@
 /* To help understanding the notes like a piano, reference:
        www.choose-piano-lessons.com/piano-keys.html */
 // Add more music here. Up to 3.
-extern short nullSong[1];
-extern short westMinsterSong[11];
-extern short oldSpiceSong[10]; // GGACBDEC
-extern short allKeysSong[9];
+  extern short *nullSong; // size 1
+extern short *westMinsterSong; // size 11
+extern short *oldSpiceSong; // size 10
+extern short *allKeysSong; // size 9
 
-// Since I cannot initialize an irregular 2d array of notes they need to be allocated.
-extern short *firstSong;
-extern short *secondSong;
-extern short *thirdSong;
-extern short *fourthSong;
 // Need to use malloc for this.
 extern short **allMusic;
 

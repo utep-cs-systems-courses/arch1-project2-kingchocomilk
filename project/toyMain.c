@@ -36,5 +36,4 @@ int main() {
 
   // Leave the main program and go into the interrupt.
   or_sr(0x18);
-  
 }

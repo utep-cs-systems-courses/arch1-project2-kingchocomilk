@@ -4,7 +4,10 @@
 #include "musicPlayer.h"
 #include "music.h"
 
-char switch_state_down, switch_state_changed; /* effectively boolean */
+char switch1_state_down, switch2_state_down, switch3_state_down,
+  switch4_state_down,switch_state_changed; /* effectively boolean */
+short **allMusic;
+short *currentSong;
 
 static char 
 switch_update_interrupt_sense()
@@ -37,15 +40,23 @@ switch_interrupt_handler()
   switch4_state_down = (p2val & SW4) ? 0 : 1;
   if (switch1_state_down) {
     currentSong = *(allMusic + 0);
+    getLengthOfSong();
+    //musicHeadIndex = 0;
   }
   else if (switch2_state_down) {
     currentSong = *(allMusic + 1);
+    getLengthOfSong();
+    //musicHeadIndex = 0;
   }
   else if (switch3_state_down) {
     currentSong = *(allMusic + 2);
+    getLengthOfSong();
+    //musicHeadIndex = 0;
   }
   else if (switch4_state_down) {
     currentSong = *(allMusic + 3);
+    getLengthOfSong();
+    //musicHeadIndex = 0;
   }
   switch_state_changed = 1;
   led_update();
