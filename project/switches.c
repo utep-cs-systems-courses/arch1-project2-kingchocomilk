@@ -8,6 +8,7 @@ char switch1_state_down, switch2_state_down, switch3_state_down,
   switch4_state_down, switch_state_changed; /* effectively boolean */
 short **allMusic; // Music list
 short *currentSong; // Currently Playing!
+int light_state;
 
 static char 
 switch_update_interrupt_sense()
@@ -49,21 +50,26 @@ switch_interrupt_handler()
     lengthOfSong = getLengthOfSong();
     // Reset the "needlehead" back to the beginning.
     musicHeadIndex = 0;
+    // Reset the light state.
+    light_state = 0;
   }
   else if (switch2_state_down) {
     currentSong = *(allMusic + 1);
     lengthOfSong = getLengthOfSong();
     musicHeadIndex = 0;
+    light_state = 0;
   }
   else if (switch3_state_down) {
     currentSong = *(allMusic + 2);
     lengthOfSong = getLengthOfSong();
     musicHeadIndex = 0;
+    light_state = 0;
   }
   else if (switch4_state_down) {
     currentSong = *(allMusic + 3);
     lengthOfSong = getLengthOfSong();
     musicHeadIndex = 0;
+    light_state = 0;
   }
   switch_state_changed = 1;
   led_update();
