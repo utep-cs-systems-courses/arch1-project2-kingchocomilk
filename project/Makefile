@@ -22,7 +22,7 @@ sr.o: sr.h sr.s
 
 p1_interrupt_handler.o: p1_interrupt_handler.c switches.o
 
-led.o: led.h led.c music.o musicPlayer.o
+led.o: led.h led_update.s music.o musicPlayer.o
 
 musicPlayer.o: musicPlayer.h musicPlayer.c music.o music.h music.c
 
