@@ -8,6 +8,7 @@ short *oldSpiceSong;
 short *allKeysSong;
 short **allMusic; 
 
+
 void musicInit() {
   nullSong = (short*) malloc(sizeof(short) * 2);
   *nullSong = Z0;
