@@ -5,9 +5,9 @@
 #include "music.h"
 
 char switch1_state_down, switch2_state_down, switch3_state_down,
-  switch4_state_down,switch_state_changed; /* effectively boolean */
-short **allMusic;
-short *currentSong;
+  switch4_state_down, switch_state_changed; /* effectively boolean */
+short **allMusic; // Music list
+short *currentSong; // Currently Playing!
 
 static char 
 switch_update_interrupt_sense()
@@ -34,29 +34,36 @@ void
 switch_interrupt_handler()
 {
   char p2val = switch_update_interrupt_sense();
-  switch1_state_down = (p2val & SW1) ? 0 : 1; /* 0 when SW1 is up */
+
+  /* 0 when the switch is up */
+  switch1_state_down = (p2val & SW1) ? 0 : 1; 
   switch2_state_down = (p2val & SW2) ? 0 : 1;
   switch3_state_down = (p2val & SW3) ? 0 : 1;
   switch4_state_down = (p2val & SW4) ? 0 : 1;
-  if (switch1_state_down) {
+
+  /* Change the music. */
+  if (switch1_state_down) { 
+    // Change the pointer to the selected song.
     currentSong = *(allMusic + 0);
-    getLengthOfSong();
-    //musicHeadIndex = 0;
+    // Update the music player to know how long the song is.
+    lengthOfSong = getLengthOfSong();
+    // Reset the "needlehead" back to the beginning.
+    musicHeadIndex = 0;
   }
   else if (switch2_state_down) {
     currentSong = *(allMusic + 1);
-    getLengthOfSong();
-    //musicHeadIndex = 0;
+    lengthOfSong = getLengthOfSong();
+    musicHeadIndex = 0;
   }
   else if (switch3_state_down) {
     currentSong = *(allMusic + 2);
-    getLengthOfSong();
-    //musicHeadIndex = 0;
+    lengthOfSong = getLengthOfSong();
+    musicHeadIndex = 0;
   }
   else if (switch4_state_down) {
     currentSong = *(allMusic + 3);
-    getLengthOfSong();
-    //musicHeadIndex = 0;
+    lengthOfSong = getLengthOfSong();
+    musicHeadIndex = 0;
   }
   switch_state_changed = 1;
   led_update();

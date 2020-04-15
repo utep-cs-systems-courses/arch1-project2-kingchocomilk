@@ -6,17 +6,7 @@ short *nullSong;
 short *westMinsterSong;
 short *oldSpiceSong;
 short *allKeysSong;
-short **allMusic;
-
-int getLengthOf(short *notes) {
-  int length = 0;
-  int index = 0;
-  while (*(notes + index) != 0) {
-    length++;
-    index++;
-  }
-  return index-1;
-}
+short **allMusic; 
 
 void musicInit() {
   nullSong = (short*) malloc(sizeof(short) * 2);
